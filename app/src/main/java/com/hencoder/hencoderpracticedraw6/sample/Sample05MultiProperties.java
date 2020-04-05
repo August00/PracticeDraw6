@@ -1,8 +1,9 @@
 package com.hencoder.hencoderpracticedraw6.sample;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,7 @@ import android.widget.ImageView;
 import com.hencoder.hencoderpracticedraw6.R;
 import com.hencoder.hencoderpracticedraw6.Utils;
 
-public class Sample05MultiProperties extends ConstraintLayout {
+public class Sample05MultiProperties extends CoordinatorLayout {
     Button animateBt;
     ImageView imageView;
     boolean animated;
@@ -29,7 +30,7 @@ public class Sample05MultiProperties extends ConstraintLayout {
     }
 
     @Override
-    protected void onAttachedToWindow() {
+    public void onAttachedToWindow() {
         super.onAttachedToWindow();
 
         animateBt = (Button) findViewById(R.id.animateBt);
