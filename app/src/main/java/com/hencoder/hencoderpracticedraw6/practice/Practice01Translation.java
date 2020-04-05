@@ -22,6 +22,7 @@ import static com.hencoder.hencoderpracticedraw6.Utils.dpToPixel;
 public class Practice01Translation extends RelativeLayout {
     Button animateBt;
     ImageView imageView;
+    int count;
 
     public Practice01Translation(Context context) {
         super(context);
@@ -41,15 +42,42 @@ public class Practice01Translation extends RelativeLayout {
 
         animateBt = (Button) findViewById(R.id.animateBt);
         imageView = (ImageView) findViewById(R.id.imageView);
+        count = 0;
         if (SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             // 给音乐图标加上合适的阴影
             imageView.setOutlineProvider(new MusicOutlineProvider());
         }
 
         animateBt.setOnClickListener(new OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().translationX/Y/Z() 来让 View 平移
+                switch (count){
+                    case 0:
+                        imageView.animate().translationX(200);
+                        break;
+                    case 1:
+                        imageView.animate().translationX(-200);
+                        break;
+                    case 2:
+                        imageView.animate().translationY(100);
+                        break;
+                    case 3:
+                        imageView.animate().translationY(-100);
+                        break;
+                    case 4:
+                        imageView.animate().translationZ(200);
+                        break;
+                    case 5:
+                        imageView.animate().translationZ(-200);
+                        break;
+                    default:
+                        break;
+                }
+                count++;
+                if(count == 6)
+                    count = 0;
             }
         });
     }
